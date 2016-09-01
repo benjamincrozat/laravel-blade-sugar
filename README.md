@@ -6,6 +6,12 @@
 
 Some useful sugar for your Laravel Blade templates to keep 'em DRY and clean.
 
+## Installation
+
+```php
+composer require benjamincrozat/laravel-blade-sugar
+```
+
 ## Usage
 
 In your ```config/app.php```, add the service provider:
