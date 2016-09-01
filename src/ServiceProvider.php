@@ -67,7 +67,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             $pieces = collect(explode(',', $expression));
 
             $pieces = $pieces->map(function ($value, $key) {
-                return trim($value, '\' ');
+                return trim($value, '()\' ');
             });
 
             return '<?php $' . $pieces[0] . ' = ' . $pieces[1] . '; ?>';
