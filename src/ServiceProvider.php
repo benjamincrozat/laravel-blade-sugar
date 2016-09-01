@@ -3,6 +3,7 @@
 namespace BC\Laravel\BladeSugar;
 
 use Blade;
+use Markdown;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
