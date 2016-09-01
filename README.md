@@ -78,7 +78,7 @@ In your ```config/app.php```, add the service provider:
 ```php
 <select id="status" name="status">
     <option value="draft" @selected($article->status == 'draft')>Draft</option>
-    <option value="visible" @selected($article->status == 'visible')>Visible</option>
+    <option value="published" @selected($article->status == 'published')>Published</option>
 </select>
 ```
 
