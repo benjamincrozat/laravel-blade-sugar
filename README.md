@@ -13,7 +13,7 @@ In your ```config/app.php```, add the service provider:
 ```php
 'providers' => [
 
-    BC\Laravel\LaravelBladeSugar\ServiceProvider::class,
+    BC\Laravel\BladeSugar\ServiceProvider::class,
 
 ],
 ```

@@ -1,6 +1,6 @@
 <?php
 
-namespace BC\Laravel\LaravelBladeSugar;
+namespace BC\Laravel\BladeSugar;
 
 use Blade;
 

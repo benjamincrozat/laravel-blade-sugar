@@ -13,11 +13,12 @@
         "directive",
         "laravel",
         "laravel-blade-sugar",
-        "package"
+        "package",
+        "sugar"
     ],
     "autoload": {
         "psr-4": {
-            "BC\\Laravel\\LaravelBladeSugar\\": "src"
+            "BC\\Laravel\\BladeSugar\\": "src"
         }
     },
     "autoload-dev": {
