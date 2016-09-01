@@ -24,7 +24,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         Blade::directive('checked', function ($expression) {
-            return "<?php if ($expression) echo 'checked'; ?>";
+            return "<?= $expression ? 'checked' : ''; ?>";
         });
 
         Blade::directive('csrfField', function ($expression) {
@@ -64,9 +64,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Blade::directive('with', function ($expression) {
-            $pieces = collect(explode(',', $expression));
-
-            $pieces = $pieces->map(function ($value, $key) {
+            $pieces = collect(explode(',', $expression))->map(function ($value, $key) {
                 return trim($value, '()\' ');
             });
 
