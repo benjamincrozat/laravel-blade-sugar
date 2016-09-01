@@ -1,0 +1,1 @@
+@trans('hello.world')

@@ -1,0 +1,36 @@
+{
+    "name": "benjamincrozat/laravel-blade-sugar",
+    "description": "",
+    "license": "WTFPL",
+    "authors": [
+        {
+            "name": "Benjamin Crozat",
+            "email": "benjamin@croz.at"
+        }
+    ],
+    "keywords": [
+        "blade",
+        "directive",
+        "laravel",
+        "laravel-blade-sugar",
+        "package"
+    ],
+    "autoload": {
+        "psr-4": {
+            "BC\\Laravel\\LaravelBladeSugar\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "require": {
+        "php" : "^7.0",
+        "illuminate/support": "5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.0",
+        "orchestra/testbench": "^3.0"
+    }
+}
