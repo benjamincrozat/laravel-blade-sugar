@@ -82,6 +82,13 @@ In your ```config/app.php```, add the service provider:
 </select>
 ```
 
+### @storageUrl()
+
+```php
+<img src="@storageUrl($article->illustration)">
+<img src="@storageUrl($article->illustration, 's3')">
+```
+
 ### @trans()
 
 ```php

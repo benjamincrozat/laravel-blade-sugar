@@ -55,6 +55,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             return "<?= $expression ? 'selected' : ''; ?>";
         });
 
+        Blade::directive('storageUrl', function ($expression) {
+            $arguments = $this->getArgumentsFromExpression($expression);
+
+            if ($arguments->count() == 2) {
+                return '<?= Storage::disk(' . $arguments[0] . ')->url(' . $arguments[1] . '); ?>';
+            } else {
+                return '<?= Storage::disk()->url(' . $arguments[0] . '); ?>';
+            }
+        });
+
         Blade::directive('trans', function ($expression) {
             return "<?= trans($expression); ?>";
         });
@@ -64,11 +74,19 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Blade::directive('with', function ($expression) {
-            $pieces = collect(explode(',', $expression))->map(function ($value, $key) {
-                return trim($value, '()\' ');
-            });
+            $arguments = $this->getArgumentsFromExpression($expression);
 
-            return '<?php $' . $pieces[0] . ' = ' . $pieces[1] . '; ?>';
+            return '<?php $' . $arguments[0] . ' = ' . $arguments[1] . '; ?>';
+        });
+    }
+
+    /**
+     * Get arguments from Blade directive expression.
+     */
+    protected function getArgumentsFromExpression(string $expression) : \Illuminate\Support\Collection
+    {
+        return collect(explode(',', $expression))->map(function ($value, $key) {
+            return trim($value, '()\' ');
         });
     }
 }
