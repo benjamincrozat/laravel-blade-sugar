@@ -109,8 +109,9 @@ You can now do this:
 
 ```php
 @with('category', $article->category)
+@with('user', $article->user)
 
-by {{ $article->user->name }} in <a href="@route('article-categories.show', $category->slug)">{{ $category->name }}</a>
+by {{ $user->name }} in <a href="@route('article-categories.show', $category->slug)">{{ $category->name }}</a>
 ```
 
 Instead of:
