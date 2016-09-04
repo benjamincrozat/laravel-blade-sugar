@@ -4,7 +4,7 @@
 
 # Laravel Blade Sugar
 
-Some useful sugar for your Laravel Blade templates to keep 'em DRY and clean.
+Add sugar to Laravel Blade to keep yours templates DRY and clean.
 
 ## Installation
 
@@ -118,6 +118,10 @@ Instead of:
 ```php
 by {{ $article->user->name }} in <a href="@route('article-categories.show', $article->category->slug)">{{ $article->category->name }}</a>
 ```
+
+## ToDo
+
+- [ ] Tests; I still can't figure out how to make Orchestra to work yet. Feel free to [send a pull request](https://github.com/benjamincrozat/laravel-blade-sugar/compare).
 
 ## License
 
