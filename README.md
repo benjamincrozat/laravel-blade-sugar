@@ -4,7 +4,7 @@
 
 # Laravel Blade Sugar
 
-Add sugar to Laravel Blade to keep yours templates DRY and clean.
+Add sugar to Laravel Blade to keep your templates DRY and clean.
 
 ## Installation
 
