@@ -65,6 +65,12 @@ In your ```config/app.php```, add the service provider:
 </form>
 ```
 
+### @paginationIfPages()
+
+```php
+@paginationIfPages($articles)
+```
+
 ### @route()
 
 ```php
