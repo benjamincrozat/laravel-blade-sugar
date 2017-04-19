@@ -2,8 +2,9 @@
 
 namespace BC\Laravel\BladeSugar\Tests;
 
-use BC\Laravel\BladeSugar\Dummy;
 use Illuminate\Database\Capsule\Manager as DB;
+
+class Dummy extends \Illuminate\Database\Eloquent\Model {}
 
 class ServiceProviderTest extends TestCase
 {
@@ -65,9 +66,6 @@ class ServiceProviderTest extends TestCase
         $db->addConnection([
             'driver'    => 'sqlite',
             'database'  => ':memory:',
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
         ]);
         $db->bootEloquent();
         $db->setAsGlobal();
