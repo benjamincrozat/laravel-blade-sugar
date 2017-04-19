@@ -13,16 +13,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-        //
-    }
-
-    /**
-     * Register the services.
-     *
-     * @return void
-     */
-    public function register()
-    {
         Blade::directive('checked', function ($expression) {
             return "<?= $expression ? 'checked' : ''; ?>";
         });
@@ -40,7 +30,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Blade::directive('markdown', function ($expression) {
-            return "<?= Markdown::convertToHtml($expression); ?>";
+            return "<?= (new Parsedown)->parse($expression); ?>";
         });
 
         Blade::directive('methodField', function ($expression) {
@@ -62,10 +52,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         Blade::directive('storageUrl', function ($expression) {
             $arguments = $this->getArgumentsFromExpression($expression);
 
-            if ($arguments->count() == 2) {
-                return '<?= Storage::disk(' . $arguments[0] . ')->url(' . $arguments[1] . '); ?>';
+            if ($arguments->count() === 2) {
+                return '<?= Storage::disk("' . $arguments[0] . '")->url(' . $arguments[1] . '); ?>';
             } else {
-                return '<?= Storage::disk()->url(' . $arguments[0] . '); ?>';
+                return '<?= Storage::disk()->url("' . $arguments[0] . '"); ?>';
             }
         });
 

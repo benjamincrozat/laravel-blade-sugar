@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/benjamincrozat/laravel-blade-sugar.svg?branch=master)](https://travis-ci.org/benjamincrozat/laravel-blade-sugar)
 [![Latest Stable Version](https://poser.pugx.org/benjamincrozat/laravel-blade-sugar/v/stable)](https://packagist.org/packages/benjamincrozat/laravel-blade-sugar)
 [![License](https://poser.pugx.org/benjamincrozat/laravel-blade-sugar/license)](https://packagist.org/packages/benjamincrozat/laravel-blade-sugar)
 [![Total Downloads](https://poser.pugx.org/benjamincrozat/laravel-blade-sugar/downloads)](https://packagist.org/packages/benjamincrozat/laravel-blade-sugar)
@@ -26,7 +27,14 @@ In your ```config/app.php```, add the service provider:
 
 ## Available directives
 
-### @csrfField()
+### 1. @checked()
+
+```php
+<!-- This checkbox will be checked if the condition below returns true. -->
+<input type="checkbox" @checked($value === 'something')>
+```
+
+### 2. @csrfField()
 
 ```php
 <form>
@@ -34,7 +42,7 @@ In your ```config/app.php```, add the service provider:
 </form>
 ```
 
-### @csrfToken()
+### 3. @csrfToken()
 
 ```php
 <form>
@@ -42,22 +50,19 @@ In your ```config/app.php```, add the service provider:
 </form>
 ```
 
-### @gravatar()
+### 4. @gravatar()
 
 ```php
 <img src="@gravatar($email)">
 ```
 
-### @markdown()
+### 5. @markdown()
 
 ```php
-<article>
-    <h1>{{ $title }}</h1>
-    @markdown($content)
-</article>
+@markdown('**Hello, World!**')
 ```
 
-### @methodField()
+### 6. @methodField()
 
 ```php
 <form>
@@ -65,13 +70,25 @@ In your ```config/app.php```, add the service provider:
 </form>
 ```
 
-### @paginationIfPages()
+### 7. @paginationIfPages()
+
+This one will display a pagination only if needed.
+
+So you do this:
 
 ```php
 @paginationIfPages($articles)
 ```
 
-### @route()
+Instead of this:
+
+```php
+@if ($articles->lastPage() > 1)
+    {{ $articles->links() }}
+@endif
+```
+
+### 8. @route()
 
 ```php
 <a href="@route('articles.index')">Blog</a>
@@ -79,7 +96,7 @@ In your ```config/app.php```, add the service provider:
 <a href="@route('articles.show', ['slug' => $article->slug])">{{ $article->title }}</a>
 ```
 
-### @selected()
+### 9. @selected()
 
 ```php
 <select id="status" name="status">
@@ -88,28 +105,28 @@ In your ```config/app.php```, add the service provider:
 </select>
 ```
 
-### @storageUrl()
+### 10. @storageUrl()
 
 ```php
 <img src="@storageUrl($article->illustration)">
 <img src="@storageUrl($article->illustration, 's3')">
 ```
 
-### @trans()
+### 11. @trans()
 
 ```php
 <p>@trans('text.welcome')</p>
 <p>@trans('text.welcome-name', ['name' => 'Homer Simpson'])</p>
 ```
 
-### @url()
+### 12. @url()
 
 ```php
 <a href="@url('user/profile')">Register</a>
 <a href="@url('user/profile', [1])">Register</a>
 ```
 
-### @with()
+### 13. @with()
 
 You can now do this:
 
@@ -124,11 +141,6 @@ Instead of:
 
 ```php
 by {{ $article->user->name }} in <a href="@route('article-categories.show', $article->category->slug)">{{ $article->category->name }}</a>
-```
-
-## ToDo
-
-- [ ] Tests; I still can't figure out how to make Orchestra to work yet. Feel free to [send a pull request](https://github.com/benjamincrozat/laravel-blade-sugar/compare).
 
 ## License
 

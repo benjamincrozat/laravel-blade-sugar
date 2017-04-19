@@ -16,23 +16,26 @@
         "package",
         "sugar"
     ],
+    "require": {
+        "php" : "^7.1",
+        "illuminate/contracts": "^5.4",
+        "illuminate/support": "^5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "orchestra/testbench": "^3.4"
+    },
     "autoload": {
         "psr-4": {
             "BC\\Laravel\\BladeSugar\\": "src"
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
+        "psr-4": {
+            "BC\\Laravel\\BladeSugar\\Tests\\": "tests"
+        }
     },
-    "require": {
-        "php" : "^7.0",
-        "illuminate/support": "^5.0",
-        "graham-campbell/markdown": "^6.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^5.0",
-        "orchestra/testbench": "^3.0"
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }

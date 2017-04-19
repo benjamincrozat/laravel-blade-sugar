@@ -1,0 +1,1 @@
+@storageUrl('path/to/some/file')
