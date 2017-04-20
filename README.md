@@ -141,6 +141,7 @@ Instead of:
 
 ```php
 by {{ $article->user->name }} in <a href="@route('article-categories.show', $article->category->slug)">{{ $article->category->name }}</a>
+```
 
 ## License
 
