@@ -32,7 +32,6 @@ In your ```config/app.php```, add the service provider:
 Automatically adds a `checked` attribute if the condition returns true.
 
 ```php
-<!-- This checkbox will be checked if the condition below returns true. -->
 <input type="checkbox" @checked($value === 'something')>
 ```
 
