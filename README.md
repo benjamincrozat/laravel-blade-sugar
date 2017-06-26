@@ -123,7 +123,11 @@ Instead of this:
 
 ```php
 <a href="@url('user/profile')">Register</a>
-<a href="@url('user/profile', [1])">Register</a>
+<a href="@url('user/profile', 'john-doe')">Register</a>
+<a href="@url('some/other/route', [
+    'foo' => 'bar',
+    ...
+])">Register</a>
 ```
 
 ### 13. @with()
