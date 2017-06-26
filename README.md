@@ -29,12 +29,16 @@ In your ```config/app.php```, add the service provider:
 
 ### 1. @checked()
 
+Automatically adds a `checked` attribute if the condition returns true.
+
 ```php
 <!-- This checkbox will be checked if the condition below returns true. -->
 <input type="checkbox" @checked($value === 'something')>
 ```
 
 ### 2. @csrfField()
+
+Adds a hidden CSRF field.
 
 ```php
 <form>
@@ -44,6 +48,8 @@ In your ```config/app.php```, add the service provider:
 
 ### 3. @csrfToken()
 
+Sometimes, it can be useful to only get the CSRF Token. So here is a Blade directive for that.
+
 ```php
 <form>
     <input type="hidden" name="_token" value="@csrfToken()">
@@ -52,17 +58,23 @@ In your ```config/app.php```, add the service provider:
 
 ### 4. @gravatar()
 
+Automatically displays a Gravatar from a given email address. 
+
 ```php
 <img src="@gravatar($email)">
 ```
 
 ### 5. @markdown()
 
+Automatically parses Markdown.
+
 ```php
 @markdown('**Hello, World!**')
 ```
 
 ### 6. @methodField()
+
+Adds a hidden method field.
 
 ```php
 <form>
@@ -72,7 +84,7 @@ In your ```config/app.php```, add the service provider:
 
 ### 7. @paginationIfPages()
 
-This one will display a pagination only if needed.
+Displays pagination only if needed. (It only works with `paginate()`, not `simplePaginate()`, yet.)
 
 So you do this:
 
@@ -90,6 +102,8 @@ Instead of this:
 
 ### 8. @route()
 
+Just the `route()` helper wrapped in a Blade directive.
+
 ```php
 <a href="@route('articles.index')">Blog</a>
 <a href="@route('articles.show', $article->slug)">{{ $article->title }}</a>
@@ -97,6 +111,8 @@ Instead of this:
 ```
 
 ### 9. @selected()
+
+Automatically adds a `selected` attribute if the condition returns true.
 
 ```php
 <select id="status" name="status">
@@ -107,6 +123,8 @@ Instead of this:
 
 ### 10. @storageUrl()
 
+Generates a URL from any supported storage.
+
 ```php
 <img src="@storageUrl($article->illustration)">
 <img src="@storageUrl($article->illustration, 's3')">
@@ -114,12 +132,16 @@ Instead of this:
 
 ### 11. @trans()
 
+Just the `trans()` helper wrapped in a Blade directive. 
+
 ```php
 <p>@trans('text.welcome')</p>
 <p>@trans('text.welcome-name', ['name' => 'Homer Simpson'])</p>
 ```
 
 ### 12. @url()
+
+Just the `url()` helper wrapped in a Blade directive.
 
 ```php
 <a href="@url('user/profile')">Register</a>
