@@ -57,7 +57,7 @@ Sometimes, it can be useful to only get the CSRF Token. So here is a Blade direc
 
 ### 4. @gravatar()
 
-Automatically displays a Gravatar from a given email address. 
+Automatically displays a Gravatar from a given email address.
 
 ```php
 <img src="@gravatar($email)">
@@ -131,7 +131,9 @@ Generates a URL from any supported storage.
 
 ### 11. @trans()
 
-Just the `trans()` helper wrapped in a Blade directive. 
+**This directive is not useful anymore. Since Laravel 5.2, you can just use the `@lang()` Blade directive.**
+
+Just the `trans()` helper wrapped in a Blade directive.
 
 ```php
 <p>@trans('text.welcome')</p>
