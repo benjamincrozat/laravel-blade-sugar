@@ -9,6 +9,24 @@ class Dummy extends \Illuminate\Database\Eloquent\Model {}
 class ServiceProviderTest extends TestCase
 {
     /** @test */
+    public function it_can_render_an_asset() : void
+    {
+        $this->assertEquals(
+            'http://localhost/img/test.jpg',
+            $this->renderView('asset')
+        );
+    }
+
+    /** @test */
+    public function it_can_render_a_secure_asset() : void
+    {
+        $this->assertEquals(
+            'http://localhost/img/test.jpg',
+            $this->renderView('secure-asset')
+        );
+    }
+
+    /** @test */
     public function it_can_check_a_checkbox() : void
     {
         $this->assertEquals(

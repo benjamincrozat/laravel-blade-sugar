@@ -13,6 +13,14 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
+        Blade::directive('asset', function ($expression) {
+            return "<?= asset($expression); ?>";
+        });
+
+        Blade::directive('secureAsset', function ($expression) {
+            return "<?= secure_asset($expression); ?>";
+        });
+
         Blade::directive('checked', function ($expression) {
             return "<?= $expression ? 'checked' : ''; ?>";
         });

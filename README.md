@@ -27,7 +27,29 @@ In your ```config/app.php```, add the service provider:
 
 ## Available directives
 
-### 1. @checked()
+### @asset()
+
+Renders an asset using the current URL scheme:
+
+```php
+<!-- Renders as <img src="http(s)://example.com/img/photo.jpg"> -->
+<img src="@asset('img/photo.jpg')">
+```
+
+More in the official Laravel documentation: https://laravel.com/docs/5.4/helpers#method-asset
+
+### @secureAsset()
+
+Renders an asset using HTTPS:
+
+```php
+<!-- Renders as <img src="https://example.com/img/photo.jpg"> -->
+<img src="@secureAsset('img/photo.jpg')">
+```
+
+More in the official Laravel documentation: https://laravel.com/docs/5.4/helpers#method-secure-asset
+
+### @checked()
 
 Automatically adds a `checked` attribute if the condition returns true.
 
@@ -35,7 +57,7 @@ Automatically adds a `checked` attribute if the condition returns true.
 <input type="checkbox" @checked($value === 'something')>
 ```
 
-### 2. @csrfField()
+### @csrfField()
 
 Adds a hidden CSRF field.
 
@@ -45,7 +67,7 @@ Adds a hidden CSRF field.
 </form>
 ```
 
-### 3. @csrfToken()
+### @csrfToken()
 
 Sometimes, it can be useful to only get the CSRF Token. So here is a Blade directive for that.
 
@@ -55,7 +77,7 @@ Sometimes, it can be useful to only get the CSRF Token. So here is a Blade direc
 </form>
 ```
 
-### 4. @gravatar()
+### @gravatar()
 
 Automatically displays a Gravatar from a given email address.
 
@@ -63,7 +85,7 @@ Automatically displays a Gravatar from a given email address.
 <img src="@gravatar($email)">
 ```
 
-### 5. @markdown()
+### @markdown()
 
 Automatically parses Markdown.
 
@@ -71,7 +93,7 @@ Automatically parses Markdown.
 @markdown('**Hello, World!**')
 ```
 
-### 6. @methodField()
+### @methodField()
 
 Adds a hidden method field.
 
@@ -81,7 +103,7 @@ Adds a hidden method field.
 </form>
 ```
 
-### 7. @paginationIfPages()
+### @paginationIfPages()
 
 Displays pagination only if needed. (It only works with `paginate()`, not `simplePaginate()`, yet.)
 
@@ -99,7 +121,7 @@ Instead of this:
 @endif
 ```
 
-### 8. @route()
+### @route()
 
 Just the `route()` helper wrapped in a Blade directive.
 
@@ -109,7 +131,7 @@ Just the `route()` helper wrapped in a Blade directive.
 <a href="@route('articles.show', ['slug' => $article->slug])">{{ $article->title }}</a>
 ```
 
-### 9. @selected()
+### @selected()
 
 Automatically adds a `selected` attribute if the condition returns true.
 
@@ -120,7 +142,7 @@ Automatically adds a `selected` attribute if the condition returns true.
 </select>
 ```
 
-### 10. @storageUrl()
+### @storageUrl()
 
 Generates a URL from any supported storage.
 
@@ -129,7 +151,7 @@ Generates a URL from any supported storage.
 <img src="@storageUrl($article->illustration, 's3')">
 ```
 
-### 11. @trans()
+### @trans()
 
 **This directive is not useful anymore. Since Laravel 5.2, you can just use the `@lang()` Blade directive.**
 
@@ -140,7 +162,7 @@ Just the `trans()` helper wrapped in a Blade directive.
 <p>@trans('text.welcome-name', ['name' => 'Homer Simpson'])</p>
 ```
 
-### 12. @url()
+### @url()
 
 Just the `url()` helper wrapped in a Blade directive.
 
@@ -153,7 +175,7 @@ Just the `url()` helper wrapped in a Blade directive.
 ])">Register</a>
 ```
 
-### 13. @with()
+### @with()
 
 You can now do this:
 
