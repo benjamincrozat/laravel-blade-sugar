@@ -38,9 +38,11 @@
     "scripts": {
         "test": "vendor/bin/phpunit"
     },
-    "laravel": {
-        "providers": [
-            "BC\\Laravel\\BladeSugar\\ServiceProvider"
-        ]
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BC\\Laravel\\BladeSugar\\ServiceProvider"
+            ]
+        }
     }
 }
