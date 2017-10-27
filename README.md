@@ -103,20 +103,20 @@ Adds a hidden method field.
 </form>
 ```
 
-### @paginationIfPages()
+### @pagination()
 
-Displays pagination only if needed. (It only works with `paginate()`, not `simplePaginate()`, yet.)
+Displays a `Paginator` or a `LengthAwarePaginator` if needed.
 
 So you do this:
 
 ```php
-@paginationIfPages($articles)
+@pagination($articles)
 ```
 
 Instead of this:
 
 ```php
-@if ($articles->lastPage() > 1)
+@if ($articles->hasMorePages())
     {{ $articles->links() }}
 @endif
 ```

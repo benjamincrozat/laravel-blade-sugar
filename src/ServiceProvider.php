@@ -46,7 +46,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Blade::directive('paginationIfPages', function ($expression) {
-            return '<?php if (' . $expression . '->lastPage() > 1) echo ' . $expression . '->links(); ?>';
+            return '<?php if (' . $expression . '->hasMorePages()) echo ' . $expression . '->links(); ?>';
         });
 
         Blade::directive('route', function ($expression) {
