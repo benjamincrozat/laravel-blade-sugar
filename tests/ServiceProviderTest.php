@@ -8,6 +8,15 @@ use Illuminate\Database\Capsule\Manager as DB;
 class ServiceProviderTest extends TestCase
 {
     /** @test */
+    public function it_can_display_localized_text()
+    {
+        $this->assertEquals(
+            'hello.world',
+            $this->renderView('__')
+        );
+    }
+
+    /** @test */
     public function it_can_render_an_asset()
     {
         $this->assertEquals(
@@ -116,15 +125,6 @@ class ServiceProviderTest extends TestCase
         $this->assertEquals(
             '/storage/path/to/some/file',
             $this->renderView('storage-url')
-        );
-    }
-
-    /** @test */
-    public function it_can_display_localized_text()
-    {
-        $this->assertEquals(
-            'hello.world',
-            $this->renderView('trans')
         );
     }
 

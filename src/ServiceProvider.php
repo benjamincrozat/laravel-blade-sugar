@@ -67,8 +67,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             }
         });
 
-        Blade::directive('trans', function ($expression) {
-            return "<?= trans($expression); ?>";
+        Blade::directive('__', function ($expression) {
+            return "<?= __($expression); ?>";
         });
 
         Blade::directive('url', function ($expression) {

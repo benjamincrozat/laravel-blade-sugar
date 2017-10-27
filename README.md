@@ -27,6 +27,17 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 
 ## Available directives
 
+### @\_\_()
+
+**This directive is not useful anymore. Since Laravel 5.2, you can just use the `@lang()` Blade directive.**
+
+Just the `__()` helper wrapped in a Blade directive.
+
+```php
+<p>@__('text.welcome')</p>
+<p>@__('text.welcome-name', ['name' => 'Homer Simpson'])</p>
+```
+
 ### @asset()
 
 Renders an asset using the current URL scheme:
@@ -149,17 +160,6 @@ Generates a URL from any supported storage.
 ```php
 <img src="@storageUrl($article->illustration)">
 <img src="@storageUrl($article->illustration, 's3')">
-```
-
-### @trans()
-
-**This directive is not useful anymore. Since Laravel 5.2, you can just use the `@lang()` Blade directive.**
-
-Just the `trans()` helper wrapped in a Blade directive.
-
-```php
-<p>@trans('text.welcome')</p>
-<p>@trans('text.welcome-name', ['name' => 'Homer Simpson'])</p>
 ```
 
 ### @url()
