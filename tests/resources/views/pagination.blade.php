@@ -1,1 +1,1 @@
-@paginationIfPages($dummies)
+@pagination($dummies)

@@ -3,19 +3,10 @@
 namespace BC\Laravel\BladeSugar\Tests;
 
 use Illuminate\Pagination\Paginator;
-use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ServiceProviderTest extends TestCase
 {
-    /** @test */
-    public function it_can_display_localized_text()
-    {
-        $this->assertEquals(
-            'hello.world',
-            $this->renderView('__')
-        );
-    }
-
     /** @test */
     public function it_can_render_an_asset()
     {
@@ -44,21 +35,6 @@ class ServiceProviderTest extends TestCase
     }
 
     /** @test */
-    public function it_can_generate_a_csrf_field()
-    {
-        $this->assertContains(
-            '<input type="hidden" name="_token" value="">',
-            $this->renderView('csrf-field')
-        );
-    }
-
-    /** @test */
-    public function it_can_generate_a_csrf_token()
-    {
-        $this->assertEmpty($this->renderView('csrf-token'));
-    }
-
-    /** @test */
     public function it_can_display_a_gravatar_from_an_email()
     {
         $this->assertEquals(
@@ -77,26 +53,29 @@ class ServiceProviderTest extends TestCase
     }
 
     /** @test */
-    public function it_can_generate_a_method_field()
-    {
-        $this->assertContains(
-            '<input type="hidden" name="_method" value="PUT">',
-            $this->renderView('method-field')
-        );
-    }
-
-    /** @test */
-    public function it_can_display_pagination_only_if_needed()
+    public function it_does_not_show_pagination_if_empty()
     {
         $this->assertNotEmpty(
             $this->renderView('pagination', [
-                'dummies' => new Paginator([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)
+                'dummies' => new Paginator($items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5),
+            ])
+        );
+
+        $this->assertNotEmpty(
+            $this->renderView('pagination', [
+                'dummies' => new LengthAwarePaginator($items, 10, 5),
             ])
         );
 
         $this->assertEmpty(
             $this->renderView('pagination', [
-                'dummies' => new Paginator([], 5)
+                'dummies' => new Paginator([], 5),
+            ])
+        );
+
+        $this->assertEmpty(
+            $this->renderView('pagination', [
+                'dummies' => new LengthAwarePaginator([], 0, 5),
             ])
         );
     }

@@ -21,22 +21,11 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 'providers' => [
 
     BC\Laravel\BladeSugar\ServiceProvider::class,
-
+    
 ],
 ```
 
 ## Available directives
-
-### @\_\_()
-
-**This directive is not useful anymore. Since Laravel 5.2, you can just use the `@lang()` Blade directive.**
-
-Just the `__()` helper wrapped in a Blade directive.
-
-```php
-<p>@__('text.welcome')</p>
-<p>@__('text.welcome-name', ['name' => 'Homer Simpson'])</p>
-```
 
 ### @asset()
 
@@ -68,26 +57,6 @@ Automatically adds a `checked` attribute if the condition returns true.
 <input type="checkbox" @checked($value === 'something')>
 ```
 
-### @csrfField()
-
-Adds a hidden CSRF field.
-
-```php
-<form>
-    @csrfField()
-</form>
-```
-
-### @csrfToken()
-
-Sometimes, it can be useful to only get the CSRF Token. So here is a Blade directive for that.
-
-```php
-<form>
-    <input type="hidden" name="_token" value="@csrfToken()">
-</form>
-```
-
 ### @gravatar()
 
 Automatically displays a Gravatar from a given email address.
@@ -102,16 +71,6 @@ Automatically parses Markdown.
 
 ```php
 @markdown('**Hello, World!**')
-```
-
-### @methodField()
-
-Adds a hidden method field.
-
-```php
-<form>
-    @methodField('PUT')
-</form>
 ```
 
 ### @pagination()
@@ -181,9 +140,9 @@ You can now do this:
 
 ```php
 @with('category', $article->category)
-@with('user', $article->user)
+@with('username', $article->user->name)
 
-by {{ $user->name }} in <a href="@route('article-categories.show', $category->slug)">{{ $category->name }}</a>
+by {{ $username }} in <a href="@route('article-categories.show', $category->slug)">{{ $category->name }}</a>
 ```
 
 Instead of:

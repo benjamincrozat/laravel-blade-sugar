@@ -8,8 +8,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
      * Bootstrap the services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -25,14 +23,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             return "<?= $expression ? 'checked' : ''; ?>";
         });
 
-        Blade::directive('csrfField', function ($expression) {
-            return "<?= csrf_field(); ?>";
-        });
-
-        Blade::directive('csrfToken', function ($expression) {
-            return "<?= csrf_token(); ?>";
-        });
-
         Blade::directive('gravatar', function ($expression) {
             return "https://www.gravatar.com/avatar/<?= md5(strtolower(trim($expression))); ?>?s=128&d=mm&r=pg";
         });
@@ -41,11 +31,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             return "<?= (new Parsedown)->parse($expression); ?>";
         });
 
-        Blade::directive('methodField', function ($expression) {
-            return "<?= method_field($expression); ?>";
-        });
-
-        Blade::directive('paginationIfPages', function ($expression) {
+        Blade::directive('pagination', function ($expression) {
             return '<?php if (' . $expression . '->hasMorePages()) echo ' . $expression . '->links(); ?>';
         });
 
@@ -60,15 +46,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         Blade::directive('storageUrl', function ($expression) {
             $arguments = $this->getArgumentsFromExpression($expression);
 
-            if ($arguments->count() === 2) {
+            if (2 === $arguments->count()) {
                 return '<?= Storage::disk("' . $arguments[0] . '")->url(' . $arguments[1] . '); ?>';
             } else {
                 return '<?= Storage::disk()->url("' . $arguments[0] . '"); ?>';
             }
-        });
-
-        Blade::directive('__', function ($expression) {
-            return "<?= __($expression); ?>";
         });
 
         Blade::directive('url', function ($expression) {
@@ -84,8 +66,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     /**
      * Get arguments from Blade directive expression.
+     *
+     * @param string $expression
      */
-    protected function getArgumentsFromExpression(string $expression) : \Illuminate\Support\Collection
+    protected function getArgumentsFromExpression($expression)
     {
         return collect(explode(',', $expression))->map(function ($value, $key) {
             return trim($value, '()\' ');

@@ -19,6 +19,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
     /**
      * @param \Illuminate\Foundation\Application $app
+     *
      * @return array
      */
     protected function getPackageProviders($app)
@@ -36,12 +37,6 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('view.paths', [__DIR__ . '/resources/views']);
-
-        $app['config']->set('database.default', 'laravel_blade_sugar');
-        $app['config']->set('database.connections.laravel_blade_sugar', [
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-        ]);
     }
 
     public function renderView(string $name, array $parameters = []) : string
