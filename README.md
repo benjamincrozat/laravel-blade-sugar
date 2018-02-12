@@ -75,7 +75,7 @@ Automatically parses Markdown.
 
 ### @pagination()
 
-Displays a `Paginator` or a `LengthAwarePaginator` if needed.
+Display a paginator only if there is more than one page.
 
 So you do this:
 
