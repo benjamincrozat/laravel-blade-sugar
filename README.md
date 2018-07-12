@@ -32,29 +32,29 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 Renders an asset using the current URL scheme:
 
 ```php
-<!-- Renders as <img src="http(s)://example.com/img/photo.jpg"> -->
 <img src="@asset('img/photo.jpg')">
 ```
 
-More in the official Laravel documentation: https://laravel.com/docs/5.4/helpers#method-asset
+More in the official Laravel documentation: https://laravel.com/docs/helpers#method-asset
 
 ### @secureAsset()
 
 Renders an asset using HTTPS:
 
 ```php
-<!-- Renders as <img src="https://example.com/img/photo.jpg"> -->
 <img src="@secureAsset('img/photo.jpg')">
 ```
 
-More in the official Laravel documentation: https://laravel.com/docs/5.4/helpers#method-secure-asset
+More in the official Laravel documentation: https://laravel.com/docs/helpers#method-secure-asset
 
 ### @checked()
 
 Automatically adds a `checked` attribute if your condition returns true.
 
 ```php
-<input type="checkbox" @checked('something' === $value)>
+<input type="radio" @checked('something' === $value)> <label>Choice #1</label>
+<input type="radio" @checked('something' === $value)> <label>Choice #2</label>
+<input type="radio" @checked('something' === $value)> <label>Choice #3</label>
 ```
 
 ### @gravatar()
@@ -62,12 +62,12 @@ Automatically adds a `checked` attribute if your condition returns true.
 Automatically displays a Gravatar from a given email address.
 
 ```php
-<img src="@gravatar($email)">
+<img src="@gravatar('homer@simpson.com')">
 ```
 
 ### @markdown()
 
-Displays Markdown.
+Renders Markdown using [Parsedown](https://github.com/erusev/parsedown), which is built in Laravel.
 
 ```php
 @markdown('**Hello, World!**')
@@ -75,22 +75,22 @@ Displays Markdown.
 
 ### @route()
 
-Just the `route()` helper wrapped in a Blade directive.
+The `route()` helper wrapped in a Blade directive.
 
 ```php
-<a href="@route('articles.index')">Blog</a>
-<a href="@route('articles.show', $article->slug)">{{ $article->title }}</a>
-<a href="@route('articles.show', ['slug' => $article->slug])">{{ $article->title }}</a>
+<a href="@route('posts.index')">Blog</a>
+<a href="@route('posts.show', $post)">{{ $post->title }}</a>
+<a href="@route('posts.show', $post, true)">{{ $post->title }}</a>
 ```
 
 ### @selected()
 
-Automatically adds a `selected` attribute if your condition returns true.
+Adds a `selected` attribute if your condition returns true.
 
 ```php
-<select name="status">
-    <option value="draft" @selected($post->status == 'draft')>Draft</option>
-    <option value="published" @selected($post->status == 'published')>Published</option>
+<select>
+    <option value="draft" @selected($post->status === 'draft')>Draft</option>
+    <option value="published" @selected($post->status === 'published')>Published</option>
 </select>
 ```
 
