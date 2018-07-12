@@ -87,7 +87,7 @@ class LaravelBladeSugarTest extends TestCase
     public function it_can_assign_new_variables()
     {
         $this->assertEquals(
-            'bar foo foo FOO',
+            'bar foo foo FOO 123',
             $this->renderView('with')
         );
     }

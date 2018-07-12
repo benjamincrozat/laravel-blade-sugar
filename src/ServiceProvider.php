@@ -37,9 +37,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Blade::directive('storageUrl', function ($expression) {
-            $arguments = $this->getArguments($expression);
+            $arguments = explode(',', $expression);
 
-            $first = $this->trimArgument($arguments[0]);
+            $first = $this->trim($arguments[0]);
 
             if (2 === count($arguments)) {
                 return '<?php echo Storage::disk("' . $first . '")->url(' . $arguments[1] . '); ?>';
@@ -53,11 +53,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Blade::directive('with', function ($expression) {
-            $arguments = $this->getArguments($expression);
+            $first = trim(
+                explode(',', $expression)[0],
+                '\'" '
+            );
+            $second = trim(
+                substr($expression, strpos($expression, ',')),
+                ", "
+            );
 
-            $first = $this->trimArgument($arguments[0]);
-
-            return '<?php $' . $first . ' = ' . $arguments[1] . '; ?>';
+            return '<?php $' . $first . ' = ' . $second . '; ?>';
         });
     }
 
@@ -66,12 +71,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         //
     }
 
-    protected function getArguments($expression)
-    {
-        return explode(',', $expression);
-    }
-
-    protected function trimArgument($argument)
+    protected function trim($argument)
     {
         return trim($argument, '\'" ');
     }
