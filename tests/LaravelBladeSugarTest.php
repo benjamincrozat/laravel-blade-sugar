@@ -84,10 +84,10 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_create_new_variables()
+    public function it_can_assign_new_variables()
     {
         $this->assertEquals(
-            'Hello, World!',
+            'bar foo foo FOO',
             $this->renderView('with')
         );
     }

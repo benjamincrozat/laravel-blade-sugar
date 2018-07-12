@@ -40,12 +40,14 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Blade::directive('storageUrl', function ($expression) {
-            $arguments = $this->getArgumentsFromExpression($expression);
+            $arguments = $this->getArguments($expression);
+
+            $first = $this->trimArgument($arguments[0]);
 
             if (2 === $arguments->count()) {
-                return '<?php echo Storage::disk("' . $arguments[0] . '")->url(' . $arguments[1] . '); ?>';
+                return '<?php echo Storage::disk("' . $first . '")->url(' . $arguments[1] . '); ?>';
             } else {
-                return '<?php echo Storage::disk()->url("' . $arguments[0] . '"); ?>';
+                return '<?php echo Storage::disk()->url("' . $first . '"); ?>';
             }
         });
 
@@ -54,21 +56,21 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Blade::directive('with', function ($expression) {
-            $arguments = $this->getArgumentsFromExpression($expression);
+            $arguments = $this->getArguments($expression);
 
-            return '<?php $' . $arguments[0] . ' = ' . $arguments[1] . '; ?>';
+            $first = $this->trimArgument($arguments[0]);
+
+            return '<?php $' . $first . ' = ' . $arguments[1] . '; ?>';
         });
     }
 
-    /**
-     * Get arguments from Blade directive expression.
-     *
-     * @param string $expression
-     */
-    protected function getArgumentsFromExpression($expression)
+    protected function getArguments($expression)
     {
-        return collect(explode(',', $expression))->map(function ($value, $key) {
-            return trim($value, '()\'" ');
-        });
+        return collect(explode(',', $expression));
+    }
+
+    protected function trimArgument($argument)
+    {
+        return trim($argument, '\'" ');
     }
 }

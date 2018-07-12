@@ -1,12 +1,6 @@
-<?php
-$some_array = [
-    'items' => [
-        'Hello,',
-        'World!',
-    ],
-];
-?>
+@with("foo", 'bar')
+@with('bar', "foo")
+@with('baz', $bar)
+@with('something', strtoupper($bar))
 
-@with('items', $some_array['items'])
-
-<?= implode(' ', $items); ?>
+{{ $foo }} {{ $bar }} {{ $baz }} {{ $something }}
