@@ -27,6 +27,17 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 
 ## Available directives
 
+- [@asset()](#asset)
+- [@secureAsset()](#secureasset)
+- [@checked()](#checked)
+- [@gravatar()](#gravatar)
+- [@markdown()](#markdown)
+- [@route()](#route)
+- [@selected()](#selected)
+- [@storageUrl()](#storageUrl)
+- [@url()](#url)
+- [@with()](#with)
+
 ### @asset()
 
 Renders an asset using the current URL scheme:
