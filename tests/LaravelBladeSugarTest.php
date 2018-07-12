@@ -50,7 +50,7 @@ class LaravelBladeSugarTest extends TestCase
     /** @test */
     public function it_can_generate_urls_from_routes()
     {
-        $this->expectException(\ErrorException::class);
+        $this->expectException(ErrorException::class);
         $this->expectExceptionMessageRegExp('/\[hello\.world\] not defined/');
 
         $this->renderView('route');

@@ -7,6 +7,10 @@
 
 Add syntaxic sugar to Laravel Blade to keep your templates DRY and clean.
 
+## Requirements
+
+This package is tested to run on PHP 5.6+ and Laravel 5.4+.
+
 ## Installation
 
 ```php
