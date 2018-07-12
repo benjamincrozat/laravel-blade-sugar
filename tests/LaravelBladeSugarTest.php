@@ -92,7 +92,7 @@ class LaravelBladeSugarTest extends TestCase
         );
     }
 
-    public function renderView(string $name, array $parameters = []) : string
+    public function renderView($name, array $parameters = [])
     {
         return view($name)->with($parameters)->render();
     }
