@@ -66,7 +66,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     protected function getArguments($expression)
     {
-        return collect(explode(',', $expression));
+        return explode(',', $expression);
     }
 
     protected function trimArgument($argument)
