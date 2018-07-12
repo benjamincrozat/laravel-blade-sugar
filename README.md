@@ -21,7 +21,7 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 'providers' => [
 
     BC\Laravel\BladeSugar\ServiceProvider::class,
-    
+
 ],
 ```
 
@@ -51,10 +51,10 @@ More in the official Laravel documentation: https://laravel.com/docs/5.4/helpers
 
 ### @checked()
 
-Automatically adds a `checked` attribute if the condition returns true.
+Automatically adds a `checked` attribute if your condition returns true.
 
 ```php
-<input type="checkbox" @checked($value === 'something')>
+<input type="checkbox" @checked('something' === $value)>
 ```
 
 ### @gravatar()
@@ -67,28 +67,10 @@ Automatically displays a Gravatar from a given email address.
 
 ### @markdown()
 
-Automatically parses Markdown.
+Displays Markdown.
 
 ```php
 @markdown('**Hello, World!**')
-```
-
-### @pagination()
-
-Display a paginator only if there is more than one page.
-
-So you do this:
-
-```php
-@pagination($articles)
-```
-
-Instead of this:
-
-```php
-@if ($articles->hasMorePages())
-    {{ $articles->links() }}
-@endif
 ```
 
 ### @route()
@@ -103,12 +85,12 @@ Just the `route()` helper wrapped in a Blade directive.
 
 ### @selected()
 
-Automatically adds a `selected` attribute if the condition returns true.
+Automatically adds a `selected` attribute if your condition returns true.
 
 ```php
-<select id="status" name="status">
-    <option value="draft" @selected($article->status == 'draft')>Draft</option>
-    <option value="published" @selected($article->status == 'published')>Published</option>
+<select name="status">
+    <option value="draft" @selected($post->status == 'draft')>Draft</option>
+    <option value="published" @selected($post->status == 'published')>Published</option>
 </select>
 ```
 
@@ -123,7 +105,7 @@ Generates a URL from any supported storage.
 
 ### @url()
 
-Just the `url()` helper wrapped in a Blade directive.
+The `url()` helper wrapped in a Blade directive.
 
 ```php
 <a href="@url('user/profile')">Register</a>
@@ -136,19 +118,20 @@ Just the `url()` helper wrapped in a Blade directive.
 
 ### @with()
 
-You can now do this:
+This directive let you assign new variables inside your Blade template.
 
 ```php
-@with('category', $article->category)
-@with('username', $article->user->name)
+@with('foo', 'bar')
 
-by {{ $username }} in <a href="@route('article-categories.show', $category->slug)">{{ $category->name }}</a>
+{{ $foo }}
 ```
 
 Instead of:
 
 ```php
-by {{ $article->user->name }} in <a href="@route('article-categories.show', $article->category->slug)">{{ $article->category->name }}</a>
+<?php $foo = 'bar'; ?>
+
+{{ $foo }}
 ```
 
 ## License
