@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Blade;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-    /**
-     * Bootstrap the services.
-     */
     public function boot()
     {
         Blade::directive('asset', function ($expression) {
@@ -62,6 +59,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
             return '<?php $' . $first . ' = ' . $arguments[1] . '; ?>';
         });
+    }
+
+    public function register()
+    {
+        //
     }
 
     protected function getArguments($expression)
