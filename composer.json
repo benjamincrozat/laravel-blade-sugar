@@ -31,9 +31,9 @@
         }
     },
     "autoload-dev": {
-        "psr-4": {
-            "BC\\Laravel\\BladeSugar\\Tests\\": "tests"
-        }
+        "classmap": [
+            "tests"
+        ]
     },
     "scripts": {
         "test": "vendor/bin/phpunit"

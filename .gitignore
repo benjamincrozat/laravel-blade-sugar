@@ -1,4 +1,6 @@
 .DS_Store
+.idea
 .phpintel
+composer.lock
 Thumbs.db
 vendor

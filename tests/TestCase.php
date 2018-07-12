@@ -1,10 +1,8 @@
 <?php
 
-namespace BC\Laravel\BladeSugar\Tests;
+use Illuminate\Support\Facades\Artisan;
 
-use Artisan;
-
-abstract class TestCase extends \Orchestra\Testbench\TestCase
+abstract class TestCase extends Orchestra\Testbench\TestCase
 {
     /**
      * Clean up cache before running any test.
@@ -25,7 +23,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            'BC\Laravel\BladeSugar\ServiceProvider',
+            BC\Laravel\BladeSugar\ServiceProvider::class,
         ];
     }
 
@@ -37,10 +35,5 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('view.paths', [__DIR__ . '/resources/views']);
-    }
-
-    public function renderView(string $name, array $parameters = []) : string
-    {
-        return view($name)->with($parameters)->render();
     }
 }

@@ -1,11 +1,6 @@
 <?php
 
-namespace BC\Laravel\BladeSugar\Tests;
-
-use Illuminate\Pagination\Paginator;
-use Illuminate\Pagination\LengthAwarePaginator;
-
-class ServiceProviderTest extends TestCase
+class LaravelBladeSugarTest extends TestCase
 {
     /** @test */
     public function it_can_render_an_asset()
@@ -53,34 +48,6 @@ class ServiceProviderTest extends TestCase
     }
 
     /** @test */
-    public function it_does_not_show_pagination_if_empty()
-    {
-        $this->assertNotEmpty(
-            $this->renderView('pagination', [
-                'dummies' => new Paginator($items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5),
-            ])
-        );
-
-        $this->assertNotEmpty(
-            $this->renderView('pagination', [
-                'dummies' => new LengthAwarePaginator($items, 10, 5),
-            ])
-        );
-
-        $this->assertEmpty(
-            $this->renderView('pagination', [
-                'dummies' => new Paginator([], 5),
-            ])
-        );
-
-        $this->assertEmpty(
-            $this->renderView('pagination', [
-                'dummies' => new LengthAwarePaginator([], 0, 5),
-            ])
-        );
-    }
-
-    /** @test */
     public function it_can_generate_urls_from_routes()
     {
         $this->expectException(\ErrorException::class);
@@ -123,5 +90,10 @@ class ServiceProviderTest extends TestCase
             'Hello, World!',
             $this->renderView('with')
         );
+    }
+
+    public function renderView(string $name, array $parameters = []) : string
+    {
+        return view($name)->with($parameters)->render();
     }
 }

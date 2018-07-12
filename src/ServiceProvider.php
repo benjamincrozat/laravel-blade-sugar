@@ -2,7 +2,7 @@
 
 namespace BC\Laravel\BladeSugar;
 
-use Blade;
+use Illuminate\Support\Facades\Blade;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -12,49 +12,45 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         Blade::directive('asset', function ($expression) {
-            return "<?= asset($expression); ?>";
+            return "<?php echo asset($expression); ?>";
         });
 
         Blade::directive('secureAsset', function ($expression) {
-            return "<?= secure_asset($expression); ?>";
+            return "<?php echo secure_asset($expression); ?>";
         });
 
         Blade::directive('checked', function ($expression) {
-            return "<?= $expression ? 'checked' : ''; ?>";
+            return "<?php echo $expression ? 'checked' : ''; ?>";
         });
 
         Blade::directive('gravatar', function ($expression) {
-            return "https://www.gravatar.com/avatar/<?= md5(strtolower(trim($expression))); ?>?s=128&d=mm&r=pg";
+            return "https://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($expression))); ?>?s=128&d=mm&r=pg";
         });
 
         Blade::directive('markdown', function ($expression) {
-            return "<?= (new Parsedown)->parse($expression); ?>";
-        });
-
-        Blade::directive('pagination', function ($expression) {
-            return '<?php if (' . $expression . '->hasMorePages()) echo ' . $expression . '->links(); ?>';
+            return "<?php echo (new Parsedown)->parse($expression); ?>";
         });
 
         Blade::directive('route', function ($expression) {
-            return "<?= route($expression); ?>";
+            return "<?php echo route($expression); ?>";
         });
 
         Blade::directive('selected', function ($expression) {
-            return "<?= $expression ? 'selected' : ''; ?>";
+            return "<?php echo $expression ? 'selected' : ''; ?>";
         });
 
         Blade::directive('storageUrl', function ($expression) {
             $arguments = $this->getArgumentsFromExpression($expression);
 
             if (2 === $arguments->count()) {
-                return '<?= Storage::disk("' . $arguments[0] . '")->url(' . $arguments[1] . '); ?>';
+                return '<?php echo Storage::disk("' . $arguments[0] . '")->url(' . $arguments[1] . '); ?>';
             } else {
-                return '<?= Storage::disk()->url("' . $arguments[0] . '"); ?>';
+                return '<?php echo Storage::disk()->url("' . $arguments[0] . '"); ?>';
             }
         });
 
         Blade::directive('url', function ($expression) {
-            return "<?= url($expression); ?>";
+            return "<?php echo url($expression); ?>";
         });
 
         Blade::directive('with', function ($expression) {
@@ -72,7 +68,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     protected function getArgumentsFromExpression($expression)
     {
         return collect(explode(',', $expression))->map(function ($value, $key) {
-            return trim($value, '()\' ');
+            return trim($value, '()\'" ');
         });
     }
 }
