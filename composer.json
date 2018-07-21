@@ -17,7 +17,7 @@
         "sugar"
     ],
     "require": {
-        "php" : "5.6.*|^7.0",
+        "php" : "5.6.*|7.*",
         "illuminate/contracts": "5.*",
         "illuminate/support": "5.*"
     },

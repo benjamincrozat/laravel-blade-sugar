@@ -88,6 +88,14 @@ Renders Markdown using [Parsedown](https://github.com/erusev/parsedown), which i
 @markdown('**Hello, World!**')
 ```
 
+### @mix()
+
+Echos out the path to your Laravel Mix generated asset.
+
+```php
+<link rel="stylesheet" src="@mix('/path/to/some/styles.css')">
+```
+
 ### @route()
 
 The `route()` helper wrapped in a Blade directive.

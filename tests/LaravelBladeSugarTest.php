@@ -48,6 +48,18 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
+    public function it_has_a_directive_for_the_mix_helper()
+    {
+        // The mix helper throws the error, that means our directive works.
+        $this->expectException(ErrorException::class);
+
+        $this->assertEquals(
+            '/path/to/some/styles.css',
+            $this->renderView('mix')
+        );
+    }
+
+    /** @test */
     public function it_can_generate_urls_from_routes()
     {
         $this->expectException(ErrorException::class);

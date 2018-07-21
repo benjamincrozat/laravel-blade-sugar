@@ -28,6 +28,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             return "<?php echo (new Parsedown)->parse($expression); ?>";
         });
 
+        Blade::directive('mix', function ($expression) {
+            return "<?php echo mix($expression); ?>";
+        });
+
         Blade::directive('route', function ($expression) {
             return "<?php echo route($expression); ?>";
         });
