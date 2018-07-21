@@ -36,6 +36,7 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 - [@checked()](#checked)
 - [@gravatar()](#gravatar)
 - [@markdown()](#markdown)
+- [@mix()](#mix)
 - [@route()](#route)
 - [@selected()](#selected)
 - [@storageUrl()](#storageUrl)
