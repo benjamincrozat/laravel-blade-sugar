@@ -87,6 +87,15 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
+    public function it_can_generate_a_title_tag()
+    {
+        $this->assertEquals(
+            "<title>Some Title</title>\n<title>Default Value</title>",
+            $this->renderView('title')
+        );
+    }
+
+    /** @test */
     public function it_can_generate_urls()
     {
         $this->assertEquals(

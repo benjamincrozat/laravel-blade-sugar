@@ -52,6 +52,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             }
         });
 
+        Blade::directive('title', function ($expression) {
+            $arguments = explode(',', $expression);
+
+            if (2 === count($arguments)) {
+                return '<title><?php echo empty(' . $arguments[0] . ') ? ' . trim($arguments[1]) . ' : ' . trim($arguments[0]) . ' ?></title>';
+            } else {
+                return '<title><?php echo empty(' . $arguments[0] . ') ? config(\'app.name\') : ' . $arguments[0] . ' ?></title>';
+            }
+        });
+
         Blade::directive('url', function ($expression) {
             return "<?php echo url($expression); ?>";
         });
