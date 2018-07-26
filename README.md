@@ -40,6 +40,7 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 - [@route()](#route)
 - [@selected()](#selected)
 - [@storageUrl()](#storageUrl)
+- [@title()](#title)
 - [@url()](#url)
 - [@with()](#with)
 
@@ -125,6 +126,18 @@ Generates a URL from any supported storage.
 ```php
 <img src="@storageUrl($article->illustration)">
 <img src="@storageUrl($article->illustration, 's3')">
+```
+
+### @title()
+
+Generates a title tag depending on the arguments you pass.
+
+```php
+<!-- Generates `<title>My Page Title</title>` -->
+@title('My Page Title')
+
+<!-- Generates `<title>Default Title</title>` -->
+@title(null, 'Default Title')
 ```
 
 ### @url()
