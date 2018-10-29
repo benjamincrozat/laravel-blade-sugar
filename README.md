@@ -34,6 +34,7 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 - [@asset()](#asset)
 - [@secureAsset()](#secureasset)
 - [@checked()](#checked)
+- [@config()](#config)
 - [@gravatar()](#gravatar)
 - [@markdown()](#markdown)
 - [@mix()](#mix)
@@ -63,6 +64,18 @@ Renders an asset using HTTPS:
 ```
 
 More in the official Laravel documentation: https://laravel.com/docs/helpers#method-secure-asset
+
+### @config()
+
+Displays a config value.
+
+```php
+@config('foo.bar')
+@config('foo.bar', 'Default value')
+@config(['foo.bar' => 'Value'])
+```
+
+More in the official Laravel documentation: https://laravel.com/docs/helpers#method-config
 
 ### @checked()
 
