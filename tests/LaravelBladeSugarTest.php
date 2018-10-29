@@ -30,6 +30,17 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
+    public function it_can_display_config_values()
+    {
+        config(['foo.bar' => 'Foo Bar']);
+
+        $this->assertEquals(
+            'Foo Bar',
+            $this->renderView('config')
+        );
+    }
+
+    /** @test */
     public function it_can_display_a_gravatar_from_an_email()
     {
         $this->assertEquals(

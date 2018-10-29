@@ -20,6 +20,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             return "<?php echo $expression ? 'checked' : ''; ?>";
         });
 
+        Blade::directive('config', function ($expression) {
+            return "<?php echo config($expression); ?>";
+        });
+
         Blade::directive('gravatar', function ($expression) {
             return "https://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($expression))); ?>?s=128&d=mm&r=pg";
         });
