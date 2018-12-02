@@ -152,8 +152,8 @@ Adds a `selected` attribute if your condition returns true.
 Generates a URL from any supported storage.
 
 ```php
-<img src="@storageUrl($article->illustration)">
-<img src="@storageUrl($article->illustration, 's3')">
+<img src="@storageUrl($post->illustration)">
+<img src="@storageUrl($post->illustration, 's3')">
 ```
 
 ### @title()
