@@ -87,4 +87,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             return '<?php $' . $first . ' = ' . $second . '; ?>';
         });
     }
+
+    public function register()
+    {
+        //
+    }
 }
