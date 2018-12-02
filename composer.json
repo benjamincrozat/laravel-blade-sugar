@@ -1,6 +1,6 @@
 {
     "name": "benjamincrozat/laravel-blade-sugar",
-    "description": "Some useful sugar for your Laravel Blade templates to keep 'em DRY and clean.",
+    "description": "Add syntactic sugar to your templates.",
     "license": "WTFPL",
     "authors": [
         {

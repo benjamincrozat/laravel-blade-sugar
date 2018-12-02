@@ -5,7 +5,7 @@
 
 # Laravel Blade Sugar
 
-Add syntaxic sugar to Laravel Blade to keep your templates DRY and clean.
+Add syntactic sugar to your templates.
 
 ## Requirements
 
