@@ -93,9 +93,9 @@ More in the official Laravel documentation: https://laravel.com/docs/helpers#met
 Automatically adds a `checked` attribute if your condition returns true.
 
 ```php
-<input type="radio" @checked('something' === $value)> <label>Choice #1</label>
-<input type="radio" @checked('something' === $value)> <label>Choice #2</label>
-<input type="radio" @checked('something' === $value)> <label>Choice #3</label>
+<input type="radio" value="foo" @checked('foo' === $value)> <label>Choice #1</label>
+<input type="radio" value="bar" @checked('bar' === $value)> <label>Choice #2</label>
+<input type="radio" value="baz" @checked('baz' === $value)> <label>Choice #3</label>
 ```
 
 ### @gravatar()
@@ -142,8 +142,8 @@ Adds a `selected` attribute if your condition returns true.
 
 ```php
 <select>
-    <option value="draft" @selected($post->status === 'draft')>Draft</option>
-    <option value="published" @selected($post->status === 'published')>Published</option>
+    <option value="draft" @selected('draft' === $post->status)>Draft</option>
+    <option value="published" @selected('published' === $post->status)>Published</option>
 </select>
 ```
 
