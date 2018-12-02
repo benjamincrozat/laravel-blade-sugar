@@ -9,7 +9,7 @@ Add syntactic sugar to your templates.
 
 ## Requirements
 
-This package is tested to run on PHP 5.6+ and Laravel 5.4+. You probably can go as down as Laravel 5.1, but setting up Travis to against all versions is quite tricky.
+This package is tested to run on PHP 5.6+ and Laravel 5.1+. Note that on older Laravel versions, some directives can't be used (like `@mix`) since the associated helper didn't exist yet.
 
 ## Installation
 
