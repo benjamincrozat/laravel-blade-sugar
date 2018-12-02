@@ -3,7 +3,18 @@
 class LaravelBladeSugarTest extends TestCase
 {
     /** @test */
-    public function it_can_render_an_asset()
+    public function it_generates_urls_from_actions()
+    {
+        // The action helper throws the exception, that means our
+        // directive works. No need to setup a real environment.
+        $this->expectException(ErrorException::class);
+        $this->expectExceptionMessage('Action SomeController@someMethod not defined.');
+
+        $this->renderView('action');
+    }
+
+    /** @test */
+    public function it_renders_an_asset()
     {
         $this->assertEquals(
             'http://localhost/img/test.jpg',
@@ -12,7 +23,7 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_render_a_secure_asset()
+    public function it_renders_a_secure_asset()
     {
         $this->assertEquals(
             'http://localhost/img/test.jpg',
@@ -21,7 +32,7 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_a_checkbox()
+    public function it_checks_a_checkbox()
     {
         $this->assertEquals(
             '<input type="checkbox" checked><input type="checkbox" >',
@@ -30,7 +41,7 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_config_values()
+    public function it_displays_config_values()
     {
         config(['foo.bar' => 'Foo Bar']);
 
@@ -41,7 +52,7 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_display_a_gravatar_from_an_email()
+    public function it_displays_a_gravatar_from_an_email()
     {
         $this->assertEquals(
             'https://www.gravatar.com/avatar/87706b2618c2761e396b21a2e2240e68?s=128&d=mm&r=pg',
@@ -50,7 +61,7 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_render_markdown()
+    public function it_renders_markdown()
     {
         $this->assertEquals(
             '<p><strong>Hello, World!</strong></p>',
@@ -59,9 +70,11 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_directive_for_the_mix_helper()
+    public function it_returns_the_path_from_a_versionned_mix_file()
     {
-        // The mix helper throws the error, that means our directive works.
+        // The mix helper throws the exception,
+        // that means our directive works. No
+        // need to setup a real environment.
         $this->expectException(ErrorException::class);
 
         $this->assertEquals(
@@ -71,7 +84,7 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_generate_urls_from_routes()
+    public function it_generates_urls_from_routes()
     {
         $this->expectException(ErrorException::class);
         $this->expectExceptionMessageRegExp('/\[hello\.world\] not defined/');
@@ -89,7 +102,7 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_generate_urls_from_storages()
+    public function it_generates_urls_from_storages()
     {
         $this->assertEquals(
             '/storage/path/to/some/file',
@@ -98,7 +111,7 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_generate_a_title_tag()
+    public function it_generates_a_title_tag()
     {
         $this->assertEquals(
             "<title>Some Title</title>\n<title>Default Value</title>",
@@ -107,7 +120,7 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
-    public function it_can_generate_urls()
+    public function it_generates_urls()
     {
         $this->assertEquals(
             'http://localhost/hello-world',

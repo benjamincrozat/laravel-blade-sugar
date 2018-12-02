@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Artisan;
 abstract class TestCase extends Orchestra\Testbench\TestCase
 {
     /**
-     * Clean up cache before running any test.
+     * Clean up views cache before running any test.
      */
     public function setUp()
     {

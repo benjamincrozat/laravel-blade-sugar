@@ -31,6 +31,7 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 
 ## Available directives
 
+- [@action()](#action)
 - [@asset()](#asset)
 - [@secureAsset()](#secureasset)
 - [@checked()](#checked)
@@ -44,6 +45,16 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 - [@title()](#title)
 - [@url()](#url)
 - [@with()](#with)
+
+### @action()
+
+Generates an URL for a given controller action.
+
+```php
+<a href="@action('SomeController@someAction', ['someParameter' => 'someValue'])">Some Link</a>
+```
+
+More in the official Laravel documentation: https://laravel.com/docs/helpers#method-action
 
 ### @asset()
 
@@ -105,21 +116,25 @@ Renders Markdown using [Parsedown](https://github.com/erusev/parsedown), which i
 
 ### @mix()
 
-Echos out the path to your Laravel Mix generated asset.
+Returns the path to a versioned Mix file.
 
 ```php
 <link rel="stylesheet" src="@mix('/path/to/some/styles.css')">
 ```
 
+More in the official Laravel documentation: https://laravel.com/docs/helpers#method-mix
+
 ### @route()
 
-The `route()` helper wrapped in a Blade directive.
+Generates a URL for the given named route.
 
 ```php
 <a href="@route('posts.index')">Blog</a>
 <a href="@route('posts.show', $post)">{{ $post->title }}</a>
 <a href="@route('posts.show', $post, true)">{{ $post->title }}</a>
 ```
+
+More in the official Laravel documentation: https://laravel.com/docs/helpers#method-route
 
 ### @selected()
 
@@ -155,7 +170,7 @@ Generates a title tag depending on the arguments you pass.
 
 ### @url()
 
-The `url()` helper wrapped in a Blade directive.
+Generates a fully qualified URL to the given path.
 
 ```php
 <a href="@url('user/profile')">Register</a>
@@ -165,6 +180,8 @@ The `url()` helper wrapped in a Blade directive.
     ...
 ])">Register</a>
 ```
+
+More in the official Laravel documentation: https://laravel.com/docs/helpers#method-url
 
 ### @with()
 

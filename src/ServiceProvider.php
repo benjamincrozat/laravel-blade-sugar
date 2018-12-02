@@ -8,6 +8,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function boot()
     {
+        Blade::directive('action', function ($expression) {
+            return "<?php echo action($expression); ?>";
+        });
+
         Blade::directive('asset', function ($expression) {
             return "<?php echo asset($expression); ?>";
         });
