@@ -40,6 +40,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             return "<?php echo mix($expression); ?>";
         });
 
+        Blade::directive('old', function ($expression) {
+            return "<?php echo old($expression); ?>";
+        });
+
         Blade::directive('route', function ($expression) {
             return "<?php echo route($expression); ?>";
         });

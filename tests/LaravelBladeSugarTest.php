@@ -84,6 +84,15 @@ class LaravelBladeSugarTest extends TestCase
     }
 
     /** @test */
+    public function it_retrieves_an_old_input_value_flashed_into_the_session()
+    {
+        $this->assertEquals(
+            '',
+            $this->renderView('old')
+        );
+    }
+
+    /** @test */
     public function it_generates_urls_from_routes()
     {
         $this->expectException(ErrorException::class);

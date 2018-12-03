@@ -39,6 +39,7 @@ If you're on Laravel 5.4 or older, add the service provider in your ```config/ap
 - [@gravatar()](#gravatar)
 - [@markdown()](#markdown)
 - [@mix()](#mix)
+- [@old()](#old)
 - [@route()](#route)
 - [@selected()](#selected)
 - [@storageUrl()](#storageUrl)
@@ -120,9 +121,20 @@ Returns the path to a versioned Mix file.
 
 ```php
 <link rel="stylesheet" src="@mix('/path/to/some/styles.css')">
+<script src="@mix('/path/to/some/script.js')"></script>
 ```
 
 More in the official Laravel documentation: https://laravel.com/docs/helpers#method-mix
+
+### @old()
+
+Retrieves an old input value flashed into the session:
+
+```php
+<input type="text" name="foo" value="@old('foo')">
+```
+
+More in the official Laravel documentation: https://laravel.com/docs/helpers#method-old
 
 ### @route()
 
@@ -158,14 +170,11 @@ Generates a URL from any supported storage.
 
 ### @title()
 
-Generates a title tag depending on the arguments you pass.
+Generates a title tag.
 
 ```php
-<!-- Generates `<title>My Page Title</title>` -->
 @title('My Page Title')
-
-<!-- Generates `<title>Default Title</title>` -->
-@title(null, 'Default Title')
+@title($optional_title, 'Fallback Title')
 ```
 
 ### @url()
