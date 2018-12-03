@@ -86,6 +86,11 @@ class LaravelBladeSugarTest extends TestCase
     /** @test */
     public function it_retrieves_an_old_input_value_flashed_into_the_session()
     {
+        if (app()->version() < 5.5) {
+            $this->expectException(ErrorException::class);
+            $this->expectExceptionMessage('Session store not set on request.');
+        }
+
         $this->assertEquals(
             '',
             $this->renderView('old')
