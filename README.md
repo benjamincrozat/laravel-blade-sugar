@@ -205,7 +205,7 @@ This directive let you assign new variables inside your Blade template.
 Instead of:
 
 ```php
-<?php $foo = 'bar'; ?>
+@php $foo = 'bar'; @endphp
 
 {{ $foo }}
 ```
