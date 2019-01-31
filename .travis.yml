@@ -11,7 +11,9 @@ php:
 matrix:
     fast_finish: true
     allow_failures:
-        - php: nightly
+        - php:
+            - 5.§
+            - nightly
 
 before_install:
     - travis_retry composer self-update
