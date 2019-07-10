@@ -7,7 +7,7 @@ abstract class TestCase extends Orchestra\Testbench\TestCase
     /**
      * Clean up views cache before running any test.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
