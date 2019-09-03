@@ -58,7 +58,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             $first = trim($arguments[0]);
 
             if (2 === count($arguments)) {
-                return '<?php echo Storage::disk(' . $first . ')->url(' . $arguments[1] . '); ?>';
+                return '<?php echo Storage::disk(' . $first . ')->url(' . trim('\'"', $arguments[1]) . '); ?>';
             } else {
                 return '<?php echo Storage::disk()->url("' . $first . '"); ?>';
             }
