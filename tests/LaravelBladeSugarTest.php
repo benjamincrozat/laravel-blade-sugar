@@ -119,7 +119,8 @@ class LaravelBladeSugarTest extends TestCase
     public function it_generates_urls_from_storages()
     {
         $this->assertEquals(
-            '/storage/path/to/some/file',
+            '/storage/path/to/some/file
+/storage/path/to/some/file',
             $this->renderView('storage-url')
         );
     }
