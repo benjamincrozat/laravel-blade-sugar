@@ -4,7 +4,7 @@ namespace BC\Laravel\BladeSugar;
 
 use Illuminate\Support\Facades\Blade;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider
+class LaravelBladeSugarServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function boot()
     {
@@ -33,7 +33,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         Blade::directive('markdown', function ($expression) {
-            return "<?php echo (new Parsedown)->parse($expression); ?>";
+            return "<?php echo new Illuminate\Support\HtmlString((new League\CommonMark\CommonMarkConverter([], League\CommonMark\Environment::createCommonMarkEnvironment()))->convertToHtml($expression)); ?>";
         });
 
         Blade::directive('mix', function ($expression) {
@@ -60,7 +60,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             if (2 === count($arguments)) {
                 return '<?php echo Storage::disk(' . $first . ')->url(' . $arguments[1] . '); ?>';
             } else {
-                return '<?php echo Storage::disk()->url(' . $first . '); ?>';
+                return '<?php echo Storage::url(' . $first . '); ?>';
             }
         });
 
@@ -90,10 +90,5 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
             return '<?php $' . $first . ' = ' . $second . '; ?>';
         });
-    }
-
-    public function register()
-    {
-        //
     }
 }

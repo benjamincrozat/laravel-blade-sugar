@@ -7,26 +7,10 @@
 
 Add syntactic sugar to your templates.
 
-## Requirements
-
-This package is tested to run on PHP 5.6+ and Laravel 5.1+. Note that on older Laravel versions, some directives can't be used (like `@mix`) since the associated helper didn't exist yet.
-
 ## Installation
 
 ```php
 composer require benjamincrozat/laravel-blade-sugar
-```
-
-## Usage
-
-If you're on Laravel 5.4 or older, add the service provider in your ```config/app.php``` file:
-
-```php
-'providers' => [
-
-    BC\Laravel\BladeSugar\ServiceProvider::class,
-
-],
 ```
 
 ## Available directives

@@ -5,8 +5,8 @@ class LaravelBladeSugarTest extends TestCase
     /** @test */
     public function it_generates_urls_from_actions()
     {
-        // The action helper throws the exception, that means our
-        // directive works. No need to setup a real environment.
+        // If the "action" helper throws an exception, that means our
+        // directive works. No need to setup a bunch of routes.
         $this->expectException(ErrorException::class);
         $this->expectExceptionMessage('Action SomeController@someMethod not defined.');
 
@@ -63,7 +63,7 @@ class LaravelBladeSugarTest extends TestCase
     /** @test */
     public function it_renders_markdown()
     {
-        $this->assertEquals(
+        $this->assertStringContainsString(
             '<p><strong>Hello, World!</strong></p>',
             $this->renderView('markdown')
         );

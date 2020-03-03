@@ -1,24 +1,18 @@
 language: php
 
 php:
-    - 5.6
-    - 7.0
-    - 7.1
     - 7.2
     - 7.3
-    - nightly
+    - 7.4
 
 matrix:
     fast_finish: true
-    allow_failures:
-        - php: 5.6
-        - php: nightly
 
 before_install:
     - travis_retry composer self-update
 
 install:
-    - travis_retry composer install -n --no-suggest
+    - travis_retry composer install --no-interaction --no-suggest --prefer-dist
 
 script:
     - composer test

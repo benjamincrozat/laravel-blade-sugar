@@ -7,7 +7,7 @@ abstract class TestCase extends Orchestra\Testbench\TestCase
     /**
      * Clean up views cache before running any test.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
@@ -23,7 +23,7 @@ abstract class TestCase extends Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            BC\Laravel\BladeSugar\ServiceProvider::class,
+            BC\Laravel\BladeSugar\LaravelBladeSugarServiceProvider::class,
         ];
     }
 
